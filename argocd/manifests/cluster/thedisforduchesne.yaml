@@ -47,5 +47,5 @@ spec:
       match: Host(`thedisforduchesne.com`)
       priority: 10
       services:
-        - name: entry-web
+        - name: public-web-thedisforduchesne-svc
           port: 5000
