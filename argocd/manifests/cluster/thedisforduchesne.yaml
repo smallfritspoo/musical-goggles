@@ -32,6 +32,7 @@ spec:
     app: flask-public-web-thedisforduchesne
   ports:
     - port: 5000
+      name: svc-prt
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
