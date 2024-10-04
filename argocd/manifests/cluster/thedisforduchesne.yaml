@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: public-web-thedisforduchesne
+  namespace: thedisforduchesne
 spec:
   replicas: 2
   selector:
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: public-web-thedisforduchesne-svc
+  namespace: thedisforduchesne
 spec:
   type: ClusterIP
   selector:
@@ -31,21 +33,18 @@ spec:
   ports:
     - port: 5000
 ---
-apiVersion: networking.k8s.io.v1
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
-  name: public-web-thedisforduchesne-http
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+  name: thedisforduchesneingressroute
+  namespace: thedisforduchesne.com
 spec:
-  rules:
-    - host: thedisforduchesne.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: public-web-thedisforduchesne-svc
-                port:
-                  number: 5000
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`thedisforduchesne.com`)
+      priority: 10
+      services:
+        - name:
+          port: 5000
