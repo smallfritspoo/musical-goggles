@@ -15,11 +15,6 @@ variable "region" {
   default     = "sfo2"
 }
 
-variable "default_cluster_version" {
-  description = "default k8s version"
-  type        = string
-}
-
 variable "default_node_size" {
   description = "basic node size"
   type        = string
