@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: public-web-thedisforduchesne
+  namespace: thedisforduchesne
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-public-web-thedisforduchesne
+  template:
+    metadata:
+      labels:
+        app: flask-public-web-thedisforduchesne
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: thedisforduchesne-flask 
+          image: hrichardson87/base-flask:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 5000
