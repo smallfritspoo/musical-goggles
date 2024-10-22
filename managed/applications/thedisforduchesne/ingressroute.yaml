@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: thedisforduchesneingressroute
+  namespace: thedisforduchesne
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`thedisforduchesne.com`)
+      priority: 10
+      services:
+        - name: public-web-thedisforduchesne-svc
+          port: 80

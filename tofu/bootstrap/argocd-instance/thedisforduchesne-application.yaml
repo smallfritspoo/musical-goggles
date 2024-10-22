@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/smallfritspoo/musical-goggles.git
     targetRevision: HEAD
-    path: managed/applications/thedisforduchesne/base/
+    path: managed/applications/thedisforduchesne
   destination:
     server: https://kubernetes.default.svc
     namespace: thedisforduchesne
